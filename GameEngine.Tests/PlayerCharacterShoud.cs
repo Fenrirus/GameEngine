@@ -146,6 +146,22 @@ namespace GameEngine.Tests
         }
 
         [Fact]
+        public void RaisePropertyChangeEvent()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.PropertyChanged(sut, "Health", () => sut.TakeDamage(19));
+        }
+
+        [Fact]
+        public void RaiseSleptEvent()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Raises<EventArgs>(handler => sut.PlayerSlept += handler, handler => sut.PlayerSlept -= handler, () => sut.Sleep());
+        }
+
+        [Fact]
         public void StartWithDefaultHealth()
         {
             PlayerCharacter sut = new PlayerCharacter();
