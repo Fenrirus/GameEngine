@@ -3,6 +3,7 @@ using Xunit;
 
 namespace GameEngine.Tests
 {
+    [Trait("Category", "Enemy")]
     public class EnemyFactoryShould
     {
         [Fact]
@@ -30,7 +31,7 @@ namespace GameEngine.Tests
             Assert.Equal("Zombie King", boss.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "dont run this")]
         public void CreateNormalEnemyByDefault()
         {
             var sut = new EnemyFactory();
