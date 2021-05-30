@@ -156,5 +156,17 @@ namespace GameEngine.Tests
         {
             Assert.NotEqual(0, _sut.Health);
         }
+
+        [Theory]
+        [InlineData(0, 100)]
+        [InlineData(1, 99)]
+        [InlineData(50, 50)]
+        [InlineData(101, 1)]
+        public void TakeDamage(int damage, int expectedHealth)
+        {
+            _sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, _sut.Health);
+        }
     }
 }
